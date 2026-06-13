@@ -1,0 +1,331 @@
+/* ===== Ollama-inspired Design System ===== */
+/* Paper-white canvas, pure black CTA, pill geometry, hairline borders */
+
+:root {
+  /* Brand & Accent */
+  --primary: #000000;
+  --on-primary: #ffffff;
+  --ink: #000000;
+  --ink-deep: #090909;
+
+  /* Text */
+  --charcoal: #525252;
+  --body: #737373;
+  --mute: #a3a3a3;
+
+  /* Surface */
+  --canvas: #ffffff;
+  --surface-soft: #fafafa;
+  --surface-dark: #171717;
+  --hairline: #e5e5e5;
+  --hairline-strong: #d4d4d4;
+
+  /* On-dark */
+  --on-dark: #ffffff;
+  --on-dark-mute: rgba(255, 255, 255, 0.7);
+
+  /* Semantic (medal) */
+  --gold: #fbbf24;
+  --silver: #94a3b8;
+  --bronze: #b45309;
+
+  /* Rounded */
+  --rounded-sm: 6px;
+  --rounded-lg: 12px;
+  --rounded-full: 9999px;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-xxl: 32px;
+  --space-section: 88px;
+}
+
+/* ===== Base ===== */
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--canvas);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ===== Typography ===== */
+
+.title {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.11;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: var(--space-xxl);
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+  color: var(--ink);
+}
+
+/* ===== Buttons ===== */
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--rounded-full);
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+  font-family: inherit;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+button:active {
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--ink-deep);
+}
+
+.btn-primary:disabled {
+  background-color: var(--surface-soft);
+  color: var(--mute);
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: var(--canvas);
+  color: var(--ink);
+  border: 1px solid var(--hairline-strong);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--surface-soft);
+}
+
+.btn-icon {
+  padding: 6px;
+  border-radius: var(--rounded-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  height: auto;
+  width: auto;
+}
+
+.btn-icon:hover {
+  background-color: var(--surface-soft);
+}
+
+.btn-danger-text {
+  background: transparent;
+  color: var(--charcoal);
+  border: 1px solid var(--hairline-strong);
+}
+
+.btn-danger-text:hover {
+  background-color: var(--surface-soft);
+}
+
+/* ===== Cards ===== */
+
+.card {
+  background: var(--canvas);
+  border: 1px solid var(--hairline);
+  border-radius: var(--rounded-lg);
+  padding: var(--space-xxl);
+}
+
+.card-dark {
+  background: var(--surface-dark);
+  border: none;
+  border-radius: var(--rounded-lg);
+  padding: var(--space-xxl);
+  color: var(--on-dark);
+}
+
+/* ===== Inputs ===== */
+
+.input-field {
+  padding: 8px 16px;
+  border-radius: var(--rounded-full);
+  border: 1px solid var(--hairline);
+  font-size: 16px;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.15s ease;
+  font-family: inherit;
+  width: 100%;
+  height: 40px;
+  color: var(--ink);
+  background: var(--canvas);
+}
+
+.input-field:focus {
+  border-color: var(--ink);
+}
+
+.input-field::placeholder {
+  color: var(--mute);
+}
+
+/* ===== Question Item (pill-style tag) ===== */
+
+.question-item {
+  background: var(--surface-soft);
+  border-radius: var(--rounded-full);
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink);
+  transition: background-color 0.15s ease;
+}
+
+.question-item:hover {
+  background: var(--hairline);
+}
+
+/* ===== Vote Card ===== */
+
+.vote-card {
+  background: var(--canvas);
+  border: 1px solid var(--hairline);
+  border-radius: var(--rounded-lg);
+  padding: var(--space-xl);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+  user-select: none;
+}
+
+.vote-card:hover:not(.vote-card--disabled) {
+  border-color: var(--hairline-strong);
+}
+
+.vote-card--selected {
+  border: 2px solid var(--primary);
+  background: var(--surface-soft);
+}
+
+.vote-card--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.vote-card__text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.vote-card--selected .vote-card__text {
+  font-weight: 500;
+}
+
+/* ===== Result Row ===== */
+
+.result-row {
+  display: flex;
+  align-items: center;
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.result-row:last-child {
+  border-bottom: none;
+}
+
+.result-row--top {
+  padding: var(--space-xl) 0;
+}
+
+/* ===== Animations ===== */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-pop-in {
+  animation: popIn 0.4s ease-out forwards;
+}
+
+/* ===== Scrollbar ===== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--hairline-strong);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mute);
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 28px;
+  }
+}
