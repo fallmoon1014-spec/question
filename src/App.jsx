@@ -2,8 +2,13 @@ import { useState, useEffect } from 'react';
 import AdminView from './components/AdminView';
 import VotingView from './components/VotingView';
 import ResultView from './components/ResultView';
+import EthicsGate from './components/EthicsGate';
 
 function App() {
+  const [ethicsAccepted, setEthicsAccepted] = useState(() => {
+    return sessionStorage.getItem('ethicsAccepted') === 'true';
+  });
+
   const [appState, setAppState] = useState(() => {
     return localStorage.getItem('appState') || 'admin';
   });
@@ -30,6 +35,11 @@ function App() {
     localStorage.setItem('settings', JSON.stringify(settings));
   }, [settings]);
 
+  const handleAcceptEthics = () => {
+    sessionStorage.setItem('ethicsAccepted', 'true');
+    setEthicsAccepted(true);
+  };
+
   const handleStartVoting = () => setAppState('voting');
   const handleShowResults = () => setAppState('result');
   
@@ -48,6 +58,11 @@ function App() {
   };
 
   const handleBackToAdmin = () => setAppState('admin');
+
+  // Show ethics gate before allowing any activity
+  if (!ethicsAccepted) {
+    return <EthicsGate onAccept={handleAcceptEthics} />;
+  }
 
   return (
     <div style={{ padding: '48px 24px', maxWidth: '720px', margin: '0 auto', width: '100%' }}>
@@ -83,3 +98,4 @@ function App() {
 }
 
 export default App;
+
